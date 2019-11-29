@@ -10,5 +10,5 @@
     <string name="x2DoesNotExist">\'x2\' does not exist</string>
     <string name="invalidInput">Invalid Input</string>
     <string name="xRealResults">%1$d real solution (s)</string>
-    <string name="xComplexResults">%1$d complex solution (s)</string>
+    <string name="xComplexResults">%1$d complex solutions</string>
 </resources>

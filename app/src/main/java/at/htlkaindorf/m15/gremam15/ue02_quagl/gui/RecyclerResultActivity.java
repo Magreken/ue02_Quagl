@@ -3,10 +3,12 @@ package at.htlkaindorf.m15.gremam15.ue02_quagl.gui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -112,15 +114,23 @@ public class RecyclerResultActivity extends AppCompatActivity {
 
         // Generate RecyclerView
         recyclerView = new RecyclerView(this);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
+                ? new GridLayoutManager(this, 2) : new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         final MyAdapter adapter;
         recyclerView.setAdapter(adapter =new MyAdapter());
         Intent i = getIntent();
         initComponents(i, adapter);
 
-
         setContentView(recyclerView);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void initComponents(Intent i, MyAdapter adapter) {
@@ -132,6 +142,7 @@ public class RecyclerResultActivity extends AppCompatActivity {
             adapter.add(s, getDrawable(R.drawable.equals));
             if (b.getInt("nor") == 1) {
                 adapter.add(String.format("X1: %s", numberFormat.format(b.getDouble("x1"))), getDrawable(R.drawable.calculator));
+                adapter.add(String.format(getString(R.string.xRealResults), b.getInt("nor")), getDrawable(R.drawable.info));
             } else if (b.getInt("nor") == 0) {
                 adapter.add("There is no real solution");
             } else {

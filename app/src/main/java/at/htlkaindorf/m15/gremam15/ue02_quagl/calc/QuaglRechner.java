@@ -48,7 +48,7 @@ public class QuaglRechner {
         return numberOfResults;
     }
 
-    protected String getMessageAMustNotBeZero() {
+    private String getMessageAMustNotBeZero() {
         return "A must not be Zero";
     }
 
