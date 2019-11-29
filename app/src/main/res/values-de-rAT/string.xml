@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quagl Löser</string>
+    <string name="solve_button">Lösen</string>
+    <string name="aMustNotBeZero">\'a\'darf nicht Null sein</string>
+    <string name="x1DoesNotExist">\'x1\' existiert nicht</string>
+    <string name="x2DoesNotExist">\'x2\' existiert nicht</string>
+    <string name="invalidInput">Ungültige Eingabe</string>
+    <string name="xRealResults">%1$d reelle Lösung (en)</string>
+    <string name="xComplexResults">%1$d komplexe Lösung (en)</string>
+</resources>
