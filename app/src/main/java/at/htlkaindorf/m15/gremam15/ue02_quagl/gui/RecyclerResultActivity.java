@@ -53,7 +53,7 @@ public class RecyclerResultActivity extends AppCompatActivity {
             }
 
             public TextAndImage(CharSequence text) {
-                this(text,null);
+                this(text, null);
             }
 
             public CharSequence getText() {
@@ -112,13 +112,12 @@ public class RecyclerResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Generate RecyclerView
         recyclerView = new RecyclerView(this);
         layoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
                 ? new GridLayoutManager(this, 2) : new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         final MyAdapter adapter;
-        recyclerView.setAdapter(adapter =new MyAdapter());
+        recyclerView.setAdapter(adapter = new MyAdapter());
         Intent i = getIntent();
         initComponents(i, adapter);
 
@@ -138,7 +137,6 @@ public class RecyclerResultActivity extends AppCompatActivity {
 
         if (b != null) {
             String s = summaryGenerator(b);
-            Toast.makeText(this, "is:" + b.getBoolean("isC"), Toast.LENGTH_LONG).show();
             adapter.add(s, getDrawable(R.drawable.equals));
             if (b.getInt("nor") == 1) {
                 adapter.add(String.format("X1: %s", numberFormat.format(b.getDouble("x1"))), getDrawable(R.drawable.calculator));
@@ -160,17 +158,17 @@ public class RecyclerResultActivity extends AppCompatActivity {
 
     private String summaryGenerator(Bundle b) {
         String s;
-        s = String.format(Locale.GERMAN,"%.0fx²", b.getDouble("a"));
+        s = String.format(Locale.GERMAN, "%.0fx²", b.getDouble("a"));
 
-        if(b.getDouble("b")>= 0) {
-            s = s + String.format(Locale.GERMAN,"+%.0fx", b.getDouble("b"));
+        if (b.getDouble("b") >= 0) {
+            s = s + String.format(Locale.GERMAN, "+%.0fx", b.getDouble("b"));
         } else {
-            s = s + String.format(Locale.GERMAN,"%.0fx", b.getDouble("b"));
+            s = s + String.format(Locale.GERMAN, "%.0fx", b.getDouble("b"));
         }
-        if(b.getDouble("c")>= 0) {
-            s = s + String.format(Locale.GERMAN,"+%.0f", b.getDouble("c"));
+        if (b.getDouble("c") >= 0) {
+            s = s + String.format(Locale.GERMAN, "+%.0f", b.getDouble("c"));
         } else {
-            s = s + String.format(Locale.GERMAN,"%.0f", b.getDouble("c"));
+            s = s + String.format(Locale.GERMAN, "%.0f", b.getDouble("c"));
         }
         s = s + " = 0";
         return s;
@@ -182,8 +180,8 @@ public class RecyclerResultActivity extends AppCompatActivity {
         b *= (-1);
         sp = String.format("X1: %s + %s * i", numberFormat.format(b), numberFormat.format(bundle.getDouble("imag")));
         sm = String.format("X2: %s - %s * i", numberFormat.format(b), numberFormat.format(bundle.getDouble("imag")));
-        adapter.add(sp, getDrawable(R.drawable.calculator));
-        adapter.add(sm, getDrawable(R.drawable.calculator));
+        adapter.add(sp, getDrawable(R.drawable.dino));
+        adapter.add(sm, getDrawable(R.drawable.dino));
     }
 
 }
